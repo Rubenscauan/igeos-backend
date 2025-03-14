@@ -5,6 +5,7 @@ import com.igeos.backend.custoVariavel.model.CustoVariavelUnitario;
 import com.igeos.backend.custoVariavel.service.CustoVariavelUnitarioService;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
 
 import java.util.List;
 import java.util.Optional;
@@ -39,5 +40,14 @@ public class CustoVariavelUnitarioController {
     public ResponseEntity<Void> deletar(@PathVariable Long id) {
         service.deletarPorId(id);
         return ResponseEntity.noContent().build();
+    }
+
+    @PostMapping("/upload")
+    public String uploadCSV(@RequestParam("file") MultipartFile file) {
+        if (file.isEmpty()) {
+            return "O arquivo CSV está vazio!";
+        }
+        service.importarCSV(file);
+        return "Arquivo importado com sucesso!";
     }
 }

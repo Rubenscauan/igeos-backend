@@ -2,6 +2,7 @@ package com.igeos.backend.custoMarginal.operacaoSemanal.controller;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
 
 import com.igeos.backend.balancoEnergiaSubsistema.dto.BalancoEnergiaSubsistemaRequest;
 import com.igeos.backend.custoMarginal.operacaoSemanal.dto.request.OperacaoSemanalRequest;
@@ -54,5 +55,14 @@ public class OperacaoSemanalController {
     public ResponseEntity<Void> excluirOperacaoSemanal(@PathVariable Long id) {
         operacaoSemanalService.excluirOperacaoSemanal(id);
         return ResponseEntity.noContent().build();
+    }
+
+    @PostMapping("/upload")
+    public String uploadCSV(@RequestParam("file") MultipartFile file) {
+        if (file.isEmpty()) {
+            return "O arquivo CSV está vazio!";
+        }
+        operacaoSemanalService.importarCSV(file);
+        return "Arquivo importado com sucesso!";
     }
 }

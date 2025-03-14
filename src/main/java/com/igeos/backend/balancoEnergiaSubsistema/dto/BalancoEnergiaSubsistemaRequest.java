@@ -1,8 +1,5 @@
 package com.igeos.backend.balancoEnergiaSubsistema.dto;
 
-import java.sql.Date;
-import java.sql.Time;
-
 public record BalancoEnergiaSubsistemaRequest(
     String data,
     String hora,
@@ -10,10 +7,13 @@ public record BalancoEnergiaSubsistemaRequest(
     int mes,
     String idSubsistema,
     String subsistema,
-    float geracaoHidraulicaVerificada,
-    float geracaoTermicaVerificada,
+    float valorDemanda,
+    float usinaHidraulicaVerificada,
+    float geracaoPequenaUsinaHidraulicaVerificada,
+    float geracaoUsinaTermicaVerificada,
+    float geracaoPequenaUsinaTermicaVerificada,
     float geracaoEolicaVerificada,
-    float geracaoFotovoltaicaVerificada,
-    float cargaVerificada,
-    float intercambioVerificado
+    float geracaoFotovoltaicaVerificada
 ) {}
+
+

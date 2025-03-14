@@ -12,11 +12,11 @@ public class SecurityConfig {
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
         http
             .authorizeHttpRequests(authz -> authz
-                .requestMatchers("/api/**").permitAll()  // Permite acesso a /api/** sem autenticação
-                .anyRequest().authenticated()          // Exige autenticação para outras requisições
+                .requestMatchers("/api/**").permitAll()  
+                .anyRequest().authenticated()          
             )
-            .csrf(csrf -> csrf.disable());  // Desativa CSRF para APIs REST sem estado
+            .csrf(csrf -> csrf.disable());  
 
-        return http.build();  // Retorna a configuração de segurança
+        return http.build();  
     }
 }

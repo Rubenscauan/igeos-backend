@@ -49,4 +49,13 @@ public class BalancoEnergiaSubsistemaController {
         balancoEnergiaSubsistemaService.SalvarBalancoEnergia(balancoEnergiaDTO);
     }
 
+    @PostMapping("/upload")
+    public String uploadCSV(@RequestParam("file") MultipartFile file) {
+        if (file.isEmpty()) {
+            return "O arquivo CSV está vazio!";
+        }
+        balancoEnergiaSubsistemaService.importarCSV(file);
+        return "Arquivo importado com sucesso!";
+    }
+
 }

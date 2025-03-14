@@ -21,6 +21,7 @@ import lombok.Setter;
 @Table(name = "balanco_energia_subsistema")
 public class BalancoEnergiaSubsistema{
 
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
@@ -30,11 +31,11 @@ public class BalancoEnergiaSubsistema{
     private int mes;
     private String idSubsistema;
     private String subsistema;
-    private float geracaoHidraulicaVerificada;
-    private float geracaoTermicaVerificada;
+    private float valorDemanda;
+    private float usinaHidraulicaVerificada;
+    private float geracaoPequenaUsinaHidraulicaVerificada;
+    private float geracaoUsinaTermicaVerificada;
+    private float geracaoPequenaUsinaTermicaVerificada;
     private float geracaoEolicaVerificada;
     private float geracaoFotovoltaicaVerificada;
-    private float cargaVerificada;
-    private float intercambioVerificado;
-
 }
